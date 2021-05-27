@@ -1,0 +1,47 @@
+﻿@model Agenda2068676.Models.Acudiente
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Acudientes</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" }) // línea general para todo el formulario
+    @Html.LabelFor(acudiente => acudiente.Documento)
+    @Html.EditorFor(acudiente => acudiente.Documento)
+    @Html.ValidationMessageFor(acudiente => acudiente.Documento, "", new { @class = "text-danger" }) // línea para cada campo que se debe validad
+    <hr />
+    @Html.LabelFor(acudiente => acudiente.Nombres)
+    @Html.EditorFor(acudiente => acudiente.Nombres)
+    @Html.ValidationMessageFor(acudiente => acudiente.Nombres, "", new { @class = "text-danger" })
+    <hr />
+    @Html.LabelFor(acudiente => acudiente.Apellidos)
+    @Html.EditorFor(acudiente => acudiente.Apellidos)
+    @Html.ValidationMessageFor(acudiente => acudiente.Apellidos, "", new { @class = "text-danger" })
+    <hr />
+    @Html.LabelFor(acudiente => acudiente.Direccion)
+    @Html.EditorFor(acudiente => acudiente.Direccion)
+    <hr />
+    @Html.LabelFor(acudiente => acudiente.Correo)
+    @Html.EditorFor(acudiente => acudiente.Correo)
+    @Html.ValidationMessageFor(acudiente => acudiente.Correo, "", new { @class = "text-danger" })
+    <hr />
+    @Html.LabelFor(acudiente => acudiente.Celular)
+    @Html.EditorFor(acudiente => acudiente.Celular)
+    <hr />
+
+    <input type="submit" value="Create">
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Agenda2068676.Models.Acudiente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Acudientes</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.ActionLink("Crear Acudiente", "Create")
+    </p>
+
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Celular)
+            </th>
+
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Celular)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AcudienteId }) |
+                    @*En el caso de que nos equivoquemos con el nombre de la pk
+                    tendriamos que eliminar toda la bd, pero es más fácil si
+                    se crea otra bd y eso se puede hacer a través de web.config y
+                    cambiarle el nombre a la bd:
+                    <add name="DefaultConnection" connectionString="Data Source=LAPTOP-HSGCG4IJ\SQLEXPRESS;Initial Catalog=Agenda2068676a;Integrated Security=True" providerName="System.Data.SqlClient" />
+
+                    Eso, por esto:
+
+                    <add name="DefaultConnection" connectionString="Data Source=LAPTOP-HSGCG4IJ\SQLEXPRESS;Initial Catalog=Agenda2068676ab;Integrated Security=True" providerName="System.Data.SqlClient" />*@
+                    @Html.ActionLink("Details", "Details", new { id = item.AcudienteId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AcudienteId })
+                </td>
+            </tr>
+          }
+    </table>
+}
